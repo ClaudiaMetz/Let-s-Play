@@ -6,120 +6,33 @@
   <meta name="theme-color" content="#060a10">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="Facu Games">
+  <meta name="apple-mobile-web-app-title" content="Let's Play">
   <link rel="manifest" href="manifest.webmanifest">
-  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-  <title>Facu Games</title>
-  <style>
-    :root{color-scheme:dark;--cyan:#69e7ff;--orange:#ff6a00;--ink:#060a10}
-    *{box-sizing:border-box}
-    html,body{min-height:100%;margin:0}
-    body{display:grid;place-items:center;overflow-x:hidden;background:radial-gradient(circle at 50% 22%,#163549 0,rgba(12,33,47,.72) 20%,transparent 48%),linear-gradient(180deg,#05070c,#07111a 58%,#030508);color:#fff;font-family:Arial,Helvetica,sans-serif}
-    body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.16;background-image:radial-gradient(#fff 1px,transparent 1px);background-size:31px 31px;mask-image:linear-gradient(to bottom,#000,transparent 82%)}
-    body:after{content:"";position:fixed;z-index:20;inset:0;pointer-events:none;opacity:0;background:repeating-linear-gradient(0deg,transparent 0 5px,rgba(105,231,255,.24) 6px,transparent 8px),linear-gradient(90deg,rgba(255,0,70,.18),transparent 35%,rgba(0,220,255,.2));mix-blend-mode:screen}
-    body.glitch-hit:after{animation:screenGlitch .52s steps(2,end)}
-    .landing{position:relative;width:min(100%,470px);min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:max(20px,env(safe-area-inset-top)) 20px max(24px,env(safe-area-inset-bottom));text-align:center}
-    .logo-stage{width:min(92vw,430px);max-height:61dvh;display:grid;place-items:center;filter:drop-shadow(0 0 18px rgba(105,231,255,.38));transform:translateY(0);animation:float 2.4s ease-in-out infinite alternate}
-    .logo-stage.intro{animation:logoHit 1.05s cubic-bezier(.16,1.2,.3,1),float 2.4s ease-in-out 1.05s infinite alternate}
-    .logo-stage.glitch{animation:logoGlitch .58s steps(1,end)!important}
-    .logo{grid-area:1/1;width:100%;max-height:61dvh;object-fit:contain;transition:opacity .08s steps(1,end)}
-    .logo-two{opacity:0}
-    .logo-stage.swapped .logo-one{opacity:0}
-    .logo-stage.swapped .logo-two{opacity:1}
-    .tagline{margin:-5px 0 18px;color:#a8c7d4;font-size:11px;font-weight:900;letter-spacing:1.7px;text-transform:uppercase}
-    .start{min-width:210px;min-height:48px;border:1px solid rgba(105,231,255,.8);border-radius:14px;background:linear-gradient(120deg,#0a2c3a,#111822);color:#d8faff;font:1000 13px/1 Arial;letter-spacing:1.3px;box-shadow:0 0 25px rgba(105,231,255,.18);cursor:pointer;animation:pulse 1.15s ease-in-out infinite alternate}
-    .actions{width:100%;display:grid;gap:10px;opacity:0;transform:translateY(16px);pointer-events:none;transition:opacity .45s ease,transform .45s ease}
-    .actions.ready{opacity:1;transform:none;pointer-events:auto}
-    .actions.glitch-in{animation:actionsGlitch .62s steps(1,end)}
-    .actions.glitch-in .action{animation:buttonGlitch .58s steps(1,end)}
-    .actions.glitch-in .action:nth-of-type(2){animation-delay:.07s}
-    .action{min-height:53px;display:flex;align-items:center;justify-content:center;border-radius:14px;text-decoration:none;font-size:14px;font-weight:1000;letter-spacing:1.1px;transition:transform .16s ease,filter .16s ease}
-    .action:active{transform:scale(.98)}
-    .play{border:1px solid #65eaff;background:linear-gradient(110deg,#0d7893,#164b61);color:#fff;box-shadow:0 0 20px rgba(105,231,255,.22)}
-    .install{border:1px solid #ffe066;background:linear-gradient(110deg,#f4b400,#ff7a00);color:#171006;box-shadow:0 0 26px rgba(255,190,35,.32);cursor:pointer}
-    .install.ready{animation:installPulse 1.15s ease-in-out infinite alternate}
-    .install.installed{border-color:#5b7380;background:#162530;color:#91a8b3;box-shadow:none;cursor:default}
-    .recommend{margin:-3px 0 0;color:#ffb76e;font-size:11px;font-weight:1000;letter-spacing:.85px}
-    .data-note{max-width:350px;margin:2px auto 0;color:#8da5b1;font-size:10px;line-height:1.35}
-    .sound{position:absolute;top:max(14px,env(safe-area-inset-top));right:14px;width:42px;height:42px;border:1px solid #314957;border-radius:50%;background:#09131c;color:#bceeff;font-size:18px;cursor:pointer}
-    .credit{margin-top:18px;color:#506a78;font-size:9px;font-weight:800;letter-spacing:1px}
-    .install-help{position:fixed;z-index:40;inset:0;display:grid;place-items:center;padding:22px;background:rgba(1,5,9,.82);backdrop-filter:blur(7px)}
-    .install-card{width:min(100%,390px);position:relative;padding:24px 20px 20px;border:1px solid #ffb13b;border-radius:20px;background:linear-gradient(160deg,#102433,#071019 68%);box-shadow:0 0 42px rgba(255,128,0,.22);text-align:left}
-    .install-card h2{margin:0 34px 8px 0;color:#ffd166;font-size:21px}.install-card p{margin:8px 0;color:#c8dce5;font-size:13px;line-height:1.45}.install-card b{color:#fff}.install-close{position:absolute;right:12px;top:10px;width:38px;height:38px;border:1px solid #47606d;border-radius:50%;background:#09131c;color:#fff;font-size:22px;cursor:pointer}
-    [hidden]{display:none!important}
-    @keyframes logoHit{0%{opacity:0;transform:scale(.62) rotate(-3deg);filter:blur(8px)}55%{opacity:1;transform:scale(1.055) rotate(1deg);filter:blur(0)}100%{transform:scale(1)}}
-    @keyframes float{from{transform:translateY(-3px)}to{transform:translateY(7px)}}
-    @keyframes pulse{from{box-shadow:0 0 12px rgba(105,231,255,.13)}to{box-shadow:0 0 30px rgba(105,231,255,.38)}}
-    @keyframes installPulse{from{filter:brightness(.96);transform:scale(.995)}to{filter:brightness(1.12);transform:scale(1.008)}}
-    @keyframes logoGlitch{0%,100%{transform:translate(0) skew(0);filter:drop-shadow(0 0 18px rgba(105,231,255,.38))}12%{transform:translate(-10px,2px) skew(-3deg);filter:drop-shadow(13px 0 #ff174f) drop-shadow(-12px 0 #00e5ff) hue-rotate(35deg)}25%{transform:translate(8px,-3px) skew(4deg);filter:drop-shadow(-14px 0 #ffea00) drop-shadow(11px 0 #00e5ff)}38%{transform:translate(-5px,1px) scale(1.035);filter:contrast(1.7) saturate(1.8)}52%{transform:translate(11px,0) skew(-2deg);filter:drop-shadow(12px 0 #ff174f) drop-shadow(-10px 0 #00e5ff)}66%{transform:translate(-3px,-2px) scale(.99);filter:hue-rotate(-35deg) contrast(1.5)}78%{transform:translate(5px,2px);filter:drop-shadow(-8px 0 #ff174f) drop-shadow(8px 0 #00e5ff)}88%{transform:translate(-2px,0);filter:saturate(1.5)}}
-    @keyframes screenGlitch{0%,100%{opacity:0;transform:translateX(0)}18%{opacity:.8;transform:translateX(-7px)}35%{opacity:.22;transform:translateX(9px)}52%{opacity:.65;transform:translateX(-3px)}72%{opacity:.12;transform:translateX(5px)}}
-    @keyframes actionsGlitch{0%{opacity:0;transform:translateY(18px) scale(.96)}14%{opacity:1;transform:translate(-9px,2px) skew(-2deg)}28%{transform:translate(8px,-2px) skew(2deg)}42%{opacity:.35;transform:translate(-4px,1px)}57%{opacity:1;transform:translate(5px,0)}73%{transform:translate(-2px,0)}100%{opacity:1;transform:none}}
-    @keyframes buttonGlitch{0%{filter:brightness(2);box-shadow:10px 0 #ff174f,-10px 0 #00e5ff}18%{transform:translateX(-7px);filter:hue-rotate(35deg)}34%{transform:translateX(6px);box-shadow:-8px 0 #ffea00,8px 0 #00e5ff}52%{transform:translateX(-3px);filter:contrast(1.7)}72%{transform:translateX(2px)}100%{transform:none;filter:none}}
-    @media(max-height:650px){.logo-stage{width:min(72vw,320px);max-height:52dvh}.logo{max-height:52dvh}.landing{justify-content:flex-start}.tagline{margin-top:-12px}.credit{margin-top:10px}}
-    @media(prefers-reduced-motion:reduce){.logo-stage,.logo-stage.intro,.logo-stage.glitch,.start,.actions.glitch-in,.actions.glitch-in .action{animation:none!important}.actions{transition:none}body.glitch-hit:after{animation:none}}
-  </style>
+
+  <title>Let's Play</title>
+    <link rel="stylesheet" href="./css/landing.css">
 </head>
 <body>
   <main class="landing">
-    <button class="sound" id="sound" type="button" aria-label="Silenciar intro" title="Sonido">🔊</button>
-    <div class="logo-stage" id="logoStage" aria-label="Facu Games">
-      <img class="logo logo-one" src="assets/facu-games-logo-1-back-controller.png" alt="Facu Games: el personaje jugando">
-      <img class="logo logo-two" src="assets/facu-games-logo-v2.png" alt="" aria-hidden="true">
-    </div>
-    <p class="tagline">Juegos para boludear con estilo</p>
-    <button class="start" id="start" type="button">TOCÁ PARA ENTRAR</button>
-    <section class="actions" id="actions" aria-label="Elegir cómo jugar">
-      <a class="action play" href="FacuGames.html">▶ JUGAR ONLINE</a>
-      <button class="action install" id="installApp" type="button">📲 INSTALAR FACU GAMES</button>
-      <p class="recommend">★ INSTALÁ UNA VEZ · JUGÁ DESDE TU PANTALLA PRINCIPAL</p>
-      <p class="data-note">La app funciona sin conexión. El ranking global solo usa datos al sincronizar.</p>
+    <div class="logo-stage" id="logoStage" aria-label="Let's Play"><h1 class="logo-title"><span>LET'S</span><span>PLAY</span></h1></div>
+    <p class="tagline">JUEGOS OFFLINE PARA <em>FARMEAR AURA COMO UN CAMPEÓN</em></p>
+    <section class="actions ready" id="actions" aria-label="Elegir cómo jugar">
+      <a class="action play" href="games.html">▶ JUGAR ONLINE</a>
+      <button class="action install" id="installApp" type="button">★ DESCARGALO Y JUGÁ EN TU DISPOSITIVO CUANDO QUIERAS ★</button>
+      <p class="data-note">La app funciona sin conexión. El ranking global estará disponible cuando conectemos el servicio propio.</p>
     </section>
-    <p class="credit">FACU GAMES · SIN PUBLICIDAD</p>
-    <audio id="voice" preload="auto" src="assets/facu-games-voz.mp3"></audio>
+    <video class="landing-loop" autoplay muted loop playsinline preload="auto" aria-hidden="true" tabindex="-1">
+      <source src="./assets/pablis-games-loop.mp4" type="video/mp4">
+    </video>
+    <p class="credit">LET'S PLAY · SIN PUBLICIDAD</p>
   </main>
   <section class="install-help" id="installHelp" hidden aria-modal="true" role="dialog" aria-labelledby="installTitle">
     <div class="install-card">
       <button class="install-close" id="installClose" type="button" aria-label="Cerrar">×</button>
-      <h2 id="installTitle">INSTALAR FACU GAMES</h2>
+      <h2 id="installTitle">INSTALAR LET'S PLAY</h2>
       <p id="installSteps"></p>
     </div>
   </section>
-  <script>
-    (()=>{
-      const start=document.querySelector('#start'),actions=document.querySelector('#actions'),logo=document.querySelector('#logoStage'),voice=document.querySelector('#voice'),sound=document.querySelector('#sound');
-      let muted=false,opened=false,revealTimer=0,glitchTimer=0;
-      const reveal=()=>{clearTimeout(revealTimer);start.hidden=true;actions.classList.add('ready')};
-      const glitch=()=>{logo.classList.remove('glitch');document.body.classList.remove('glitch-hit');void logo.offsetWidth;logo.classList.add('glitch');document.body.classList.add('glitch-hit');reveal();actions.classList.remove('glitch-in');void actions.offsetWidth;actions.classList.add('glitch-in');setTimeout(()=>logo.classList.add('swapped'),180);setTimeout(()=>{logo.classList.remove('glitch');document.body.classList.remove('glitch-hit');actions.classList.remove('glitch-in')},700)};
-      const enter=()=>{
-        if(opened)return;opened=true;logo.classList.remove('intro');void logo.offsetWidth;logo.classList.add('intro');
-        if(!muted){voice.currentTime=0;voice.play().catch(()=>reveal())}
-        glitchTimer=setTimeout(glitch,3000);
-        revealTimer=setTimeout(reveal,7000);
-      };
-      start.addEventListener('click',enter);
-      voice.addEventListener('ended',reveal);
-      sound.addEventListener('click',()=>{muted=!muted;voice.muted=muted;sound.textContent=muted?'🔇':'🔊';sound.setAttribute('aria-label',muted?'Activar sonido':'Silenciar intro')});
-    })();
-
-    (()=>{
-      const install=document.querySelector('#installApp'),help=document.querySelector('#installHelp'),steps=document.querySelector('#installSteps'),close=document.querySelector('#installClose');
-      let deferredPrompt=null;
-      const standalone=()=>window.matchMedia('(display-mode: standalone)').matches||window.navigator.standalone===true;
-      const sync=()=>{if(standalone()){install.textContent='✓ FACU GAMES INSTALADO';install.classList.add('installed');install.classList.remove('ready')}else if(deferredPrompt){install.textContent='📲 INSTALAR FACU GAMES';install.classList.add('ready')}};
-      const instructions=()=>{
-        const ios=/iphone|ipad|ipod/i.test(navigator.userAgent);
-        steps.innerHTML=ios
-          ? 'En <b>Safari</b>, tocá <b>Compartir</b> (el cuadrado con flecha) y elegí <b>Agregar a pantalla de inicio</b>.'
-          : 'En el menú <b>⋮</b> de Chrome elegí <b>Instalar aplicación</b> o <b>Agregar a pantalla principal</b>.';
-        help.hidden=false;
-      };
-      window.addEventListener('beforeinstallprompt',event=>{event.preventDefault();deferredPrompt=event;sync()});
-      window.addEventListener('appinstalled',()=>{deferredPrompt=null;help.hidden=true;sync()});
-      install.addEventListener('click',async()=>{if(standalone())return;if(!deferredPrompt){instructions();return}deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;sync()});
-      close.addEventListener('click',()=>help.hidden=true);help.addEventListener('click',event=>{if(event.target===help)help.hidden=true});
-      if('serviceWorker' in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
-      sync();
-    })();
-  </script>
+  <script src="./js/app/landing.js"></script>
 </body>
 </html>

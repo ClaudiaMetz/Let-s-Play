@@ -1,0 +1,52 @@
+:root{color-scheme:dark;--cyan:#69e7ff;--orange:#ff6a00;--ink:#060a10}
+    *{box-sizing:border-box}
+    html,body{min-height:100%;margin:0}
+    body{display:grid;place-items:center;overflow-x:hidden;background:radial-gradient(circle at 50% 22%,#163549 0,rgba(12,33,47,.72) 20%,transparent 48%),linear-gradient(180deg,#05070c,#07111a 58%,#030508);color:#fff;font-family:Arial,Helvetica,sans-serif}
+    body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.16;background-image:radial-gradient(#fff 1px,transparent 1px);background-size:31px 31px;mask-image:linear-gradient(to bottom,#000,transparent 82%)}
+    body:after{content:"";position:fixed;z-index:20;inset:0;pointer-events:none;opacity:0;background:repeating-linear-gradient(0deg,transparent 0 5px,rgba(105,231,255,.24) 6px,transparent 8px),linear-gradient(90deg,rgba(255,0,70,.18),transparent 35%,rgba(0,220,255,.2));mix-blend-mode:screen}
+    body.glitch-hit:after{animation:screenGlitch .52s steps(2,end)}
+    .landing{position:relative;width:min(100%,470px);min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:max(20px,env(safe-area-inset-top)) 20px max(24px,env(safe-area-inset-bottom));text-align:center}
+    .logo-stage{width:min(92vw,430px);max-height:61dvh;display:grid;place-items:center;filter:drop-shadow(0 0 18px rgba(105,231,255,.38));transform:translateY(0);animation:float 2.4s ease-in-out infinite alternate}
+    .logo-stage.intro{animation:logoHit 1.05s cubic-bezier(.16,1.2,.3,1),float 2.4s ease-in-out 1.05s infinite alternate}
+    .logo-stage.glitch{animation:logoGlitch .58s steps(1,end)!important}
+    .logo-title{transform-origin:center;animation:logoLoadScale 2.3s cubic-bezier(.16,1.2,.3,1) both}
+    .logo-title{grid-area:1/1;margin:0;display:grid;gap:8px;font-family:Arial,Helvetica,sans-serif;font-size:clamp(54px,16vw,96px);font-weight:1000;line-height:.78;letter-spacing:-.08em;text-shadow:0 8px 0 #0008,0 0 30px #69e7ff55}
+    .logo-title span:first-child{color:#69e7ff}
+    .logo-title span:last-child{color:#fff;font-size:.78em;letter-spacing:.04em}
+    .tagline{margin:-5px 0 18px;color:#a8c7d4;font-size:11px;font-weight:900;letter-spacing:1.7px;text-transform:uppercase}.tagline em{color:var(--orange);font-style:normal;text-shadow:0 0 8px #ff6a0055}
+    :root{--upper-content-drop:clamp(96px,14vh,120px)}
+    .logo-stage{position:relative;top:var(--upper-content-drop)}
+    .tagline,.start,.actions{position:relative;top:calc(clamp(48px,10vh,88px) + var(--upper-content-drop))}
+    .landing-loop{display:block;width:min(100%,420px);max-height:21dvh;object-fit:contain;margin:auto 0 8px;border-radius:14px;filter:drop-shadow(0 0 18px rgba(105,231,255,.22));flex:0 1 auto}
+    .start{min-width:210px;min-height:48px;border:1px solid rgba(105,231,255,.8);border-radius:14px;background:linear-gradient(120deg,#0a2c3a,#111822);color:#d8faff;font:1000 13px/1 Arial;letter-spacing:1.3px;box-shadow:0 0 25px rgba(105,231,255,.18);cursor:pointer;animation:pulse 1.15s ease-in-out infinite alternate}
+    .actions{width:100%;display:grid;gap:10px;opacity:0;transform:translateY(16px);pointer-events:none;transition:opacity .45s ease,transform .45s ease}
+    .actions.ready{opacity:1;transform:none;pointer-events:auto}
+    .actions.glitch-in{animation:actionsGlitch .62s steps(1,end)}
+    .actions.glitch-in .action{animation:buttonGlitch .58s steps(1,end)}
+    .actions.glitch-in .action:nth-of-type(2){animation-delay:.07s}
+    .action{min-height:53px;display:flex;align-items:center;justify-content:center;padding:10px 14px;border-radius:14px;text-decoration:none;font-size:14px;font-weight:1000;line-height:1.2;letter-spacing:1.1px;transition:transform .16s ease,filter .16s ease}
+    .action:active{transform:scale(.98)}
+    .play{border:1px solid #65eaff;background:linear-gradient(110deg,#0d7893,#164b61);color:#fff;box-shadow:0 0 20px rgba(105,231,255,.22)}
+    .install{border:1px solid #ffe066;background:linear-gradient(110deg,#f4b400,#ff7a00);color:#171006;box-shadow:0 0 26px rgba(255,190,35,.32);cursor:pointer}
+    .install.ready{animation:installPulse 1.15s ease-in-out infinite alternate}
+    .install.installed{border-color:#5b7380;background:#162530;color:#91a8b3;box-shadow:none;cursor:default}
+    .recommend{margin:-3px 0 0;color:#ffb76e;font-size:11px;font-weight:1000;letter-spacing:.85px}
+    .data-note{max-width:350px;margin:2px auto 0;color:#8da5b1;font-size:10px;line-height:1.35}
+    .sound{position:absolute;top:max(14px,env(safe-area-inset-top));right:14px;width:42px;height:42px;border:1px solid #314957;border-radius:50%;background:#09131c;color:#bceeff;font-size:18px;cursor:pointer}
+    .credit{margin-top:18px;color:#506a78;font-size:9px;font-weight:800;letter-spacing:1px}
+    .install-help{position:fixed;z-index:40;inset:0;display:grid;place-items:center;padding:22px;background:rgba(1,5,9,.82);backdrop-filter:blur(7px)}
+    .install-card{width:min(100%,390px);position:relative;padding:24px 20px 20px;border:1px solid #ffb13b;border-radius:20px;background:linear-gradient(160deg,#102433,#071019 68%);box-shadow:0 0 42px rgba(255,128,0,.22);text-align:left}
+    .install-card h2{margin:0 34px 8px 0;color:#ffd166;font-size:21px}.install-card p{margin:8px 0;color:#c8dce5;font-size:13px;line-height:1.45}.install-card b{color:#fff}.install-close{position:absolute;right:12px;top:10px;width:38px;height:38px;border:1px solid #47606d;border-radius:50%;background:#09131c;color:#fff;font-size:22px;cursor:pointer}
+    [hidden]{display:none!important}
+    @keyframes logoHit{0%{opacity:0;transform:scale(.62) rotate(-3deg);filter:blur(8px)}55%{opacity:1;transform:scale(1.055) rotate(1deg);filter:blur(0)}100%{transform:scale(1)}}
+    @keyframes logoLoadScale{0%{transform:scale(.72)}36%{transform:scale(2.5)}68%{transform:scale(.94)}100%{transform:scale(1)}}
+    @keyframes float{from{transform:translateY(-3px)}to{transform:translateY(7px)}}
+    @keyframes pulse{from{box-shadow:0 0 12px rgba(105,231,255,.13)}to{box-shadow:0 0 30px rgba(105,231,255,.38)}}
+    @keyframes installPulse{from{filter:brightness(.96);transform:scale(.995)}to{filter:brightness(1.12);transform:scale(1.008)}}
+    @keyframes logoGlitch{0%,100%{transform:translate(0) skew(0);filter:drop-shadow(0 0 18px rgba(105,231,255,.38))}12%{transform:translate(-10px,2px) skew(-3deg);filter:drop-shadow(13px 0 #ff174f) drop-shadow(-12px 0 #00e5ff) hue-rotate(35deg)}25%{transform:translate(8px,-3px) skew(4deg);filter:drop-shadow(-14px 0 #ffea00) drop-shadow(11px 0 #00e5ff)}38%{transform:translate(-5px,1px) scale(1.035);filter:contrast(1.7) saturate(1.8)}52%{transform:translate(11px,0) skew(-2deg);filter:drop-shadow(12px 0 #ff174f) drop-shadow(-10px 0 #00e5ff)}66%{transform:translate(-3px,-2px) scale(.99);filter:hue-rotate(-35deg) contrast(1.5)}78%{transform:translate(5px,2px);filter:drop-shadow(-8px 0 #ff174f) drop-shadow(8px 0 #00e5ff)}88%{transform:translate(-2px,0);filter:saturate(1.5)}}
+    @keyframes screenGlitch{0%,100%{opacity:0;transform:translateX(0)}18%{opacity:.8;transform:translateX(-7px)}35%{opacity:.22;transform:translateX(9px)}52%{opacity:.65;transform:translateX(-3px)}72%{opacity:.12;transform:translateX(5px)}}
+    @keyframes actionsGlitch{0%{opacity:0;transform:translateY(18px) scale(.96)}14%{opacity:1;transform:translate(-9px,2px) skew(-2deg)}28%{transform:translate(8px,-2px) skew(2deg)}42%{opacity:.35;transform:translate(-4px,1px)}57%{opacity:1;transform:translate(5px,0)}73%{transform:translate(-2px,0)}100%{opacity:1;transform:none}}
+    @keyframes buttonGlitch{0%{filter:brightness(2);box-shadow:10px 0 #ff174f,-10px 0 #00e5ff}18%{transform:translateX(-7px);filter:hue-rotate(35deg)}34%{transform:translateX(6px);box-shadow:-8px 0 #ffea00,8px 0 #00e5ff}52%{transform:translateX(-3px);filter:contrast(1.7)}72%{transform:translateX(2px)}100%{transform:none;filter:none}}
+    @media(max-height:650px){.logo-stage{width:min(72vw,320px);max-height:52dvh;top:20px}.logo-title{font-size:clamp(46px,14vw,72px)}.landing{justify-content:flex-start}.tagline{margin-top:-12px}.credit{margin-top:10px}.tagline,.start,.actions{top:40px}.landing-loop{max-height:14dvh}}
+    @media(prefers-reduced-motion:reduce){.logo-stage,.logo-stage.intro,.logo-stage.glitch,.start,.actions.glitch-in,.actions.glitch-in .action{animation:none!important}.actions{transition:none}body.glitch-hit:after{animation:none}}
+    @media(prefers-reduced-motion:reduce){.logo-title{animation:none!important}}

@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#05070d">
+  <title>Let's Play</title>
+    <link rel="stylesheet" href="./css/games.css">
+</head>
+<body>
+<section class="home" id="home">
+    <div class="home-shell">
+      <header class="home-head">
+        <h1 class="brand-title"><span class="pabli">ELEGÍ UN</span><span class="games">JUEGO</span></h1>
+      </header>
+
+      <div class="home-actions">
+        <button class="ranking-open" id="rankingOpen" type="button">CLICK AQUÍ Y REVISÁ TU POSICIÓN EN EL RANKING</button>
+        <button class="menu-music" id="menuMusic" type="button" aria-label="Apagar música de fondo" aria-pressed="true" title="Apagar música de fondo"><span aria-hidden="true">♫</span></button>
+      </div>
+
+      <nav class="game-list" aria-label="Juegos disponibles">
+        <button class="game-card" type="button" data-game="wordle">
+          <span class="game-icon legacy-card-icon wordle-card-icon" aria-hidden="true"><i>K</i><i>A</i><i>P</i><i>O</i><i>S</i><i>Ñ</i><i>A</i><i>L</i><i>O</i><i>R</i><i>J</i><i>U</i><i>E</i><i>G</i><i>O</i></span>
+          <span class="game-copy"><b>PALABRA DEL KAPO</b><small>Una palabra, cinco letras y seis intentos.</small></span>
+          <span class="game-arrow" aria-hidden="true">›</span>
+        </button>
+
+        <button class="game-card" type="button" data-game="kapo-letras">
+          <span class="game-icon kapocha-mini" aria-hidden="true"><i style="--i:0">K</i><i style="--i:1">A</i><i style="--i:2">P</i><i style="--i:3">O</i><i style="--i:4">C</i><i style="--i:5">H</i><i style="--i:6">A</i></span>
+          <span class="game-copy"><b>KAPO LETRAS</b><small>Completá el crucigrama usando las siete letras.</small></span>
+          <span class="game-arrow" aria-hidden="true">›</span>
+        </button>
+
+        <button class="game-card" type="button" data-game="capitan-beto">
+          <span class="game-icon orbiter-mini" aria-hidden="true"></span>
+          <span class="game-copy"><b>CAPITÁN BETO</b><small>Saltá de planeta en planeta y seguí subiendo.</small></span>
+          <span class="game-arrow" aria-hidden="true">›</span>
+        </button>
+
+        <button class="game-card" type="button" data-game="sudoku">
+          <span class="game-icon legacy-card-icon sudoku-card-icon" aria-hidden="true"><i>5</i><i>3</i><i>8</i><i>6</i><i>9</i><i>2</i><i>1</i><i>7</i><i>4</i></span>
+          <span class="game-copy"><b>SUDOKU</b><small>Fácil, medio o difícil. Vos elegís el sufrimiento.</small></span>
+          <span class="game-arrow" aria-hidden="true">›</span>
+        </button>
+
+        <button class="game-card" type="button" data-game="arkanoid">
+          <span class="game-icon legacy-card-icon ark-card-icon" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><b></b><em></em></span>
+          <span class="game-copy"><span class="game-title-row"><b>ARKANOID</b><span class="game-badge">★ +VIDAS +PUNTOS<br>BUGS RESUELTOS</span></span><small>Neón, cápsulas y un millón de pelotas.</small></span>
+          <span class="game-arrow" aria-hidden="true">›</span>
+        </button>
+
+        <button class="game-card star" type="button" data-game="clave7">
+          <span class="game-icon legacy-card-icon clave7-card-icon" aria-hidden="true"><i>7</i></span>
+          <span class="game-copy"><span class="game-title-row"><b>CLAVE 7</b></span><small>Ordená las piezas y descifrá la clave secreta.</small></span>
+          <span class="game-arrow" aria-hidden="true">›</span>
+        </button>
+
+        <button class="game-card" type="button" data-game="racing">
+          <span class="game-icon legacy-card-icon race-card-icon" aria-hidden="true"><i><b>43</b></i></span>
+          <span class="game-copy"><b>FRANCO A FONDO</b><small>Esquivá, saltá y defendé la argentinidad.</small></span>
+          <span class="game-arrow" aria-hidden="true">›</span>
+        </button>
+
+        <button class="game-card" type="button" data-game="sopita">
+          <span class="game-icon legacy-card-icon soup-card-icon" aria-hidden="true"><i>S</i><i>O</i><i>P</i><i>A</i><i>L</i><i>E</i><i>T</i><i>R</i><i>A</i><i>S</i><b></b></span>
+          <span class="game-copy"><span class="game-title-row"><b>SOPITA</b><span class="game-badge">★ AHORA EN EL RANKING</span></span><small>Buscá doce palabras sin lista y sin apuro.</small></span>
+          <span class="game-arrow" aria-hidden="true">›</span>
+        </button>
+
+        <button class="game-card" type="button" data-game="tetris">
+          <span class="game-icon legacy-card-icon tetris-card-icon" aria-hidden="true"><i></i><i></i><i></i><i></i><b></b><b></b><b></b></span>
+          <span class="game-copy"><b>TETRIS</b><small>Apilá, girá y limpiá líneas.</small></span>
+          <span class="game-arrow" aria-hidden="true">›</span>
+        </button>
+      </nav>
+
+      <p class="home-foot">PODÉS JUGAR OFFLINE, PERO LOS RANKINGS SE CONSULTAN ONLINE</p>
+    </div>
+  </section>
+
+  <section class="panel legacy-game" id="wordleView" hidden aria-labelledby="wordleTitle">
+      <div class="game-head">
+        <h1 id="wordleTitle">PALABRA DEL KAPO</h1>
+        <div class="head-actions"><button class="icon-btn" id="soundBtn" aria-label="Desactivar sonido" title="Sonido activado">🔊</button><button class="icon-btn" id="helpBtn" aria-label="Cómo jugar">?</button><button class="icon-btn" id="statsBtn" aria-label="Estadísticas">▥</button><button class="back-btn" id="backBtn" aria-label="Volver al inicio" title="Inicio"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 11.2 12 4l8.5 7.2"></path><path d="M5.5 10.2V20h13v-9.8"></path><path d="M9.5 20v-6h5v6"></path></svg></button></div>
+      </div>
+      <div class="word-mode-row"><div class="word-modes" aria-label="Modo de juego"><button class="word-mode active" id="wordRelax" type="button">TRANQUI</button><button class="word-mode turbo" id="wordTurbo" type="button">KAPO TURBO</button></div><button class="new-word" id="newWord" type="button">NUEVA PALABRA</button></div>
+      <div class="turbo-status" id="turboStatus" hidden><span>PALABRA <b id="turboProgress">1/5</b></span><span>TIEMPO TOTAL <b id="wordTime">00:00</b></span></div>
+      <div class="board" id="wordBoard" aria-label="Tablero de seis intentos"></div>
+      <p class="message" id="wordMessage" aria-live="polite">UNA PALABRA ESPAÑOLA DE 5 LETRAS</p>
+      <div class="keyboard" id="keyboard" aria-label="Teclado QWERTY"></div>
+    </section>
+
+<section class="panel legacy-game" id="sudokuView" hidden aria-labelledby="sudokuTitle">
+      <div class="game-head">
+        <h1 id="sudokuTitle">SUDOKU</h1>
+        <div class="head-actions"><button class="icon-btn" id="sudokuSound" aria-label="Desactivar sonido" title="Sonido activado">🔊</button><button class="back-btn" id="sudokuHome" aria-label="Volver al inicio" title="Inicio"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 11.2 12 4l8.5 7.2"></path><path d="M5.5 10.2V20h13v-9.8"></path><path d="M9.5 20v-6h5v6"></path></svg></button></div>
+      </div>
+      <div class="difficulty-pick" aria-label="Dificultad"><button data-level="easy">FÁCIL</button><button data-level="medium" class="active">MEDIO</button><button data-level="hard">DIFÍCIL</button></div>
+      <div class="sudoku-meta"><span id="sLevel">MEDIO</span><span>TIEMPO <b id="sTime">00:00</b></span><span>CONFLICTOS <b id="sErrors">0</b></span></div>
+      <div class="sudoku-board" id="sudokuBoard" aria-label="Tablero de Sudoku"></div>
+      <div class="number-pad" id="numberPad" aria-label="Teclado numérico"><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button><button>8</button><button>9</button><button class="erase" data-value="erase" aria-label="Borrar">⌫</button><button class="notes" id="notesBtn" data-value="notes">NOTAS</button></div>
+      <div class="sudoku-actions"><button class="s-action" id="sPause">PAUSA</button><button class="s-action" id="sHint">PISTA <span id="sHints">2</span></button><button class="s-action" id="sRestart">REINICIAR</button><button class="s-action" id="sNew">NUEVO</button></div>
+      <p class="sudoku-status" id="sStatus" aria-live="polite">TOCÁ UNA CELDA PARA EMPEZAR</p>
+      <div class="pause-cover" id="sPauseCover" hidden><div><b>PAUSA</b><small>TOCÁ REANUDAR</small></div></div>
+    </section>
+
+<section class="panel ark-panel legacy-game" id="arkanoidView" hidden aria-labelledby="arkanoidTitle">
+      <div class="game-head"><h1 id="arkanoidTitle">ARKANOID</h1><div class="head-actions"><button class="icon-btn" id="arkPause" aria-label="Pausar">Ⅱ</button><button class="icon-btn" id="arkRestart" aria-label="Reiniciar">↻</button><button class="back-btn" id="arkHome" aria-label="Volver al inicio" title="Inicio"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 11.2 12 4l8.5 7.2"></path><path d="M5.5 10.2V20h13v-9.8"></path><path d="M9.5 20v-6h5v6"></path></svg></button></div></div>
+      <div class="ark-hud"><span id="arkScore">PUNTOS 000000</span><span id="arkLevel">NIVEL 01</span><span class="ark-lives" id="arkLives" aria-label="Cinco vidas">♥ ♥ ♥ ♥ ♥</span></div>
+      <div class="ark-stage" aria-label="Maqueta de la cancha de Arkanoid">
+        <canvas class="ark-canvas" id="arkCanvas" width="390" height="650" aria-label="Cancha de Arkanoid"></canvas>
+        <div class="ark-overlay" id="arkOverlay"><div><b id="arkOverlayTitle">ARKANOID</b><small id="arkOverlayText">ARRASTRÁ ABAJO PARA MOVER<br>TOCÁ PARA LANZAR</small><button id="arkStart">JUGAR</button></div></div>
+      </div>
+      <p class="ark-power" id="arkPower" aria-live="polite"></p>
+    </section>
+
+<section class="panel tet-panel legacy-game" id="tetrisView" hidden aria-labelledby="tetrisTitle">
+      <div class="game-head"><h1 id="tetrisTitle">TETRIS</h1><div class="head-actions"><button class="icon-btn" id="tetHelp" aria-label="Cómo jugar" title="Cómo jugar">?</button><button class="icon-btn" id="tetSound" aria-label="Sonido">🔊</button><button class="icon-btn" id="tetPause" aria-label="Pausar">Ⅱ</button><button class="icon-btn" id="tetRestart" aria-label="Reiniciar">↻</button><button class="back-btn" id="tetHome" aria-label="Volver al inicio" title="Inicio"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 11.2 12 4l8.5 7.2"></path><path d="M5.5 10.2V20h13v-9.8"></path><path d="M9.5 20v-6h5v6"></path></svg></button></div></div>
+      <div class="tet-hud"><div><small>PUNTOS</small><b id="tetScore">000000</b></div><div><small>NIVEL</small><b id="tetLevel">01</b></div><div><small>LÍNEAS</small><b id="tetLines">0</b></div></div>
+      <div class="tet-play"><div class="tet-board-wrap"><canvas class="tet-board" id="tetBoard" width="240" height="480" aria-label="Tablero de Tetris"></canvas><div class="tet-overlay" id="tetOverlay"><div><h2 id="tetOvTitle">TETRIS</h2><p id="tetOvText">ARRASTRÁ LA PIEZA CON EL DEDO<br>USÁ ROTAR O CAER</p><button id="tetStart">JUGAR</button></div></div></div><aside class="tet-side"><div class="tet-next-title">SIGUIENTES</div><canvas class="tet-next" id="tetNext" width="76" height="180"></canvas><div class="tet-actions"><button class="tet-rotate" id="tetRotate" aria-label="Rotar pieza">↻<small>ROTAR</small></button><button class="tet-drop" id="tetDrop" aria-label="Dejar caer pieza">⤓<small>CAER</small></button></div></aside></div>
+      <div class="tet-drag" id="tetDrag"><span><b>↔</b>MOVER · ARRASTRÁ ↓ PARA BAJAR SUAVE</span></div>
+    </section>
+
+<section class="panel race-panel legacy-game" id="racingView" hidden aria-labelledby="racingTitle">
+      <div class="game-head"><h1 id="racingTitle">FRANCO A FONDO</h1><div class="head-actions"><button class="icon-btn" id="raceSound" aria-label="Desactivar sonido">🔊</button><button class="icon-btn" id="racePause" aria-label="Pausar">Ⅱ</button><button class="back-btn" id="raceHome" aria-label="Volver al inicio" title="Inicio"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 11.2 12 4l8.5 7.2"></path><path d="M5.5 10.2V20h13v-9.8"></path><path d="M9.5 20v-6h5v6"></path></svg></button></div></div>
+      <div class="race-wrap" id="raceWrap">
+        <canvas class="race-canvas" id="raceCanvas" width="360" height="600" aria-label="Pista de carreras"></canvas>
+        <div class="race-hud"><span id="raceScore">PUNTOS 0000</span><span id="raceRank">PUESTO 8/8</span><div class="fuel-meter"><span class="fuel-label">ARGENTINIDAD</span><div class="fuel-bar"><div class="fuel-fill" id="fuelFill"></div></div></div></div>
+        <div class="race-overlay" id="raceOverlay"><div><h2>FRANCO A FONDO</h2><div class="champion-art champion-placeholder" id="championArt" hidden aria-label="Campeón argentino">🏆🇦🇷</div><p id="raceMessage"><span class="race-callout">¡Revelate, nene!!</span><span class="race-instructions">Esquivá · saltá con doble tap · recargá la pasión argenta</span></p><div class="race-choice"><button class="race-start" id="raceStart">LARGAR</button><button class="race-start level2" id="raceLevel2" hidden>JUGAR NIVEL 2</button></div></div></div>
+      </div>
+      <div class="race-controls" hidden><button id="raceLeft" aria-label="Mover a la izquierda">←</button><button id="raceRight" aria-label="Mover a la derecha">→</button></div>
+      <p class="race-tip">ARRASTRÁ PARA MOVER · DOBLE TOQUE PARA SALTAR · P PAUSA · ESC NEGRO</p>
+    </section>
+
+<section class="panel legacy-game" id="sopitaView" hidden aria-labelledby="sopitaTitle">
+      <div class="game-head"><h1 id="sopitaTitle">SOPITA</h1><div class="head-actions"><span class="icon-btn sopita-clock" id="sopitaTime" aria-label="Tiempo transcurrido">00:00</span><button class="icon-btn" id="sopitaSound" aria-label="Desactivar sonido">🔊</button><button class="icon-btn sopita-hint" id="sopitaHint" aria-label="Pistas automáticas" disabled>PISTAS</button><button class="back-btn" id="sopitaHome" aria-label="Volver al inicio" title="Inicio"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 11.2 12 4l8.5 7.2"></path><path d="M5.5 10.2V20h13v-9.8"></path><path d="M9.5 20v-6h5v6"></path></svg></button></div></div>
+      <div class="sopita-tools"><select id="sopitaTheme" aria-label="Elegí tu temática"><option value="">ELEGÍ TU TEMÁTICA</option></select><span class="sopita-progress" id="sopitaProgress">0/12</span></div>
+      <p class="sopita-hint-text" id="sopitaHintText" aria-live="polite"></p>
+      <div class="sopita-wrap">
+        <div class="sopita-board" id="sopitaBoard" aria-label="Sopa de letras de quince filas por diez columnas"></div>
+        <svg class="sopita-ink" id="sopitaInk" viewBox="0 0 100 150" preserveAspectRatio="none" aria-hidden="true"></svg>
+        <div class="sopita-empty" id="sopitaEmpty">ELEGÍ UNA TEMÁTICA<br>Y PREPARÁ EL DEDO</div>
+        <div class="sopita-complete" id="sopitaComplete" hidden><div><b>¡SOPITA TERMINADA!</b><span id="sopitaFinal">TIEMPO 00:00</span><button id="newSopita">NUEVA SOPITA</button></div></div>
+      </div>
+    </section>
+
+  <section class="cb-game" id="cbGame" hidden aria-label="Capitán Beto">
+    <canvas class="cb-canvas" id="cbCanvas"></canvas>
+    <div class="cb-hud"><div class="cb-score-wrap"><div class="cb-score" id="cbScore">00000</div><div class="cb-best">RÉCORD <span id="cbBest">00000</span></div></div><div class="cb-lives"><i id="cbHeart">♥</i><span id="cbLives">×3</span></div></div>
+    <div class="cb-lucky-meter" id="cbLuckyMeter"><div class="cb-lucky-label"><span class="cb-lucky-word">L<br>U<br>C<br>K<br>Y<br><br>S<br>A<br>V<br>E</span><span class="cb-lucky-count" id="cbLuckyText">0/5</span></div><div class="cb-lucky-track"><div class="cb-lucky-fill" id="cbLuckyFill"></div></div></div>
+    <div class="cb-top-actions">
+      <button class="cb-icon" id="cbHelp" type="button" aria-label="Cómo jugar" title="Información">ⓘ</button>
+      <button class="cb-icon" id="cbSound" type="button" aria-label="Sonido" title="Sonido">🔊</button>
+      <button class="cb-icon" id="cbHome" type="button" aria-label="Volver al inicio" title="Inicio"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 11.2 12 4l8.5 7.2"></path><path d="M5.5 10.2V20h13v-9.8"></path><path d="M9.5 20v-6h5v6"></path></svg></button>
+    </div>
+    <div class="cb-toast" id="cbToast"></div>
+    <div class="cb-sub">TOCÁ · CLIC · ESPACIO PARA SALTAR</div>
+    <div class="cb-center" id="cbStart">
+      <div class="cb-panel"><h2>CAPITÁN BETO</h2><p>La nave gira sobre la línea de gravedad. Cuando la guía apunte bien, saltá.</p><button type="button" id="cbPlay">DESPEGAR</button></div>
+    </div>
+    <div class="cb-center" id="cbHelpPanel" hidden>
+      <div class="cb-panel"><h2>CÓMO JUGAR</h2><ul><li>Tocá, hacé clic o presioná Espacio para salir en línea recta.</li><li>Al tocar la gravedad de otro planeta quedás orbitando.</li><li>Tenés dos vueltas para saltar. En la segunda, la guía comienza a desaparecer.</li><li>Saltar hacia abajo, salir por los costados o por abajo cuesta una vida.</li><li>El planeta cercano vale 100; el segundo ×2, el tercero ×3.</li><li>Si escapás por arriba y aterrizás fuera de pantalla, conseguís un Lucky Save.</li><li>Ganás una vida cada 10.000 puntos.</li></ul><button type="button" id="cbHelpClose">SEGUIR</button></div>
+    </div>
+    <div class="cb-center" id="cbOver" hidden>
+      <div class="cb-panel"><h2>EL CAPITÁN BETO MURIÓ SOLO EN EL ESPACIO POR TU CULPA!</h2><p id="cbFinal"></p><div class="cb-over-actions"><button type="button" id="cbOverHome">SALIR</button><button type="button" id="cbAgain">JUGAR</button></div></div>
+    </div>
+  </section>
+
+  <section class="kl-game" id="klGame" hidden aria-labelledby="klTitle">
+    <div class="kl-shell">
+      <header class="kl-head">
+        <div class="kl-title-group"><h1 class="kl-title" id="klTitle">KAPO LETRAS</h1><span class="kl-head-clock">TIEMPO <b id="klTime">00:00</b></span></div>
+        <div class="kl-head-actions">
+          <button class="kl-icon-btn" id="klHelp" type="button" aria-label="Información y cómo jugar" title="Información"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 10.5v6"></path><path d="M12 7.3h.01"></path></svg></button>
+          <button class="kl-icon-btn" id="klStats" type="button" aria-label="Estadísticas" title="Estadísticas">▥</button>
+          <button class="kl-icon-btn kl-new" id="klNew" type="button" aria-label="Cambiar de nivel" title="Nueva partida">↻</button>
+          <button class="kl-icon-btn" id="klSound" type="button" aria-label="Desactivar sonido" title="Sonido">🔊</button>
+          <button class="kl-icon-btn" id="klHome" type="button" aria-label="Volver al inicio" title="Inicio"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 11.2 12 4l8.5 7.2"></path><path d="M5.5 10.2V20h13v-9.8"></path><path d="M9.5 20v-6h5v6"></path></svg></button>
+        </div>
+      </header>
+
+      <div class="kl-board-wrap">
+        <div class="kl-board" id="klBoard" aria-label="Crucigrama"></div>
+        <div class="kl-particles" id="klParticles" aria-hidden="true"></div>
+      </div>
+
+      <div class="kl-word-zone" aria-live="polite">
+        <div class="kl-current" id="klCurrent">&nbsp;</div>
+        <div class="kl-message" id="klMessage">UNÍ LAS LETRAS PARA FORMAR PALABRAS</div>
+      </div>
+
+      <div class="kl-controls">
+        <button class="kl-side-btn hint" id="klHint" type="button" aria-label="Usar una pista. Quedan 3" title="Pista">💡 <small id="klHintCount">×3</small></button>
+        <div class="kl-wheel" id="klWheel" aria-label="Letras disponibles">
+          <button class="kl-wheel-core" id="klShuffle" type="button" aria-label="Mezclar letras" title="Mezclar">⟳</button>
+        </div>
+        <button class="kl-side-btn" id="klDelete" type="button" aria-label="Borrar última letra" title="Borrar">⌫</button>
+      </div>
+    </div>
+
+    <div class="kl-modal" id="klHelpModal" hidden>
+      <div class="kl-modal-card">
+        <h2>CÓMO JUGAR</h2>
+        <ul>
+          <li>Formá palabras con las siete letras disponibles.</li>
+          <li>Cada letra puede usarse una sola vez por palabra.</li>
+          <li>En móvil o con mouse, tocá las letras o deslizá sobre ellas.</li>
+          <li>Para corregir, tocá nuevamente una letra marcada o usá ⌫.</li>
+          <li>Con teclado, escribí y presioná Enter. Backspace borra.</li>
+          <li>Las palabras extra suman puntos aunque no estén en el crucigrama.</li>
+        </ul>
+        <button type="button" data-kl-close>CERRAR</button>
+      </div>
+    </div>
+
+    <div class="kl-modal" id="klStatsModal" hidden>
+      <div class="kl-modal-card">
+        <h2>ESTADÍSTICAS</h2>
+        <p id="klStatsText"></p>
+        <button type="button" data-kl-close>CERRAR</button>
+      </div>
+    </div>
+
+    <div class="kl-modal" id="klComplete" hidden>
+      <div class="kl-modal-card">
+        <h2 class="kl-complete-title">¡SOS EL KAPO!</h2>
+        <p class="kl-complete-score" id="klCompleteText"></p>
+        <button type="button" id="klNext">SIGUIENTE NIVEL</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="clave7-host" id="clave7View" hidden aria-label="Clave 7">
+    <iframe class="clave7-frame" id="clave7Frame" title="Clave 7"></iframe>
+  </section>
+
+<dialog id="helpDialog"><div class="dialog-top"><h2>Cómo jugar</h2><button data-close="helpDialog" aria-label="Cerrar">×</button></div><div class="dialog-body"><p>Tenés seis intentos para descubrir una palabra española de cinco letras. Escribí las palabras sin tilde; la Ñ cuenta como una letra distinta.</p><p><b style="color:#83c55a">Verde:</b> lugar correcto. <b style="color:#ee8b35">Naranja:</b> está en otro lugar. Gris oscuro: no aparece.</p></div></dialog>
+<dialog id="statsDialog"><div class="dialog-top"><h2>Tus estadísticas</h2><button data-close="statsDialog" aria-label="Cerrar">×</button></div><div class="dialog-body"><div class="stats"><div class="stat"><b id="played">0</b><small>JUGADAS</small></div><div class="stat"><b id="wins">0</b><small>GANADAS</small></div><div class="stat"><b id="fails">0</b><small>FRACASOS</small></div><div class="stat"><b id="pct">0%</b><small>ACIERTOS</small></div><div class="stat"><b id="streak">0</b><small>RACHA</small></div><div class="stat"><b id="best">0</b><small>MEJOR RACHA</small></div></div></div></dialog>
+<dialog id="tetHelpDialog"><div class="dialog-top"><h2>Cómo jugar al Tetris</h2><button data-close="tetHelpDialog" aria-label="Cerrar">×</button></div><div class="dialog-body"><p><b>Con el dedo:</b></p><ul class="tet-help-list"><li>Arrastrá la pieza directamente para moverla y bajarla suave.</li><li>También podés usar la barra de arrastre inferior.</li><li>ROTAR gira la pieza y CAER la deja caer de golpe.</li></ul><p><b>Con el teclado:</b></p><ul class="tet-help-list"><li>← → posicionan la pieza.</li><li>↑ rota la pieza.</li><li>↓ la baja suave.</li><li>Espacio la deja caer.</li></ul></div></dialog>
+<div class="privacy" id="privacyScreen" hidden aria-label="Pantalla privada"></div>
+
+  
+  <div class="ranking-modal" id="rankingModal" hidden>
+    <div class="ranking-card">
+      <div class="ranking-head"><div class="ranking-title"><h2>RANKING GLOBAL</h2><small>LET'S PLAY</small></div><button class="ranking-close" id="rankingClose" type="button" aria-label="Cerrar">×</button></div>
+      <div class="ranking-player"><input id="rankingPlayer" maxlength="20" autocomplete="nickname" placeholder="TU APODO"><button id="rankingSave" type="button">GUARDAR</button></div>
+      <div class="ranking-tabs" id="rankingTabs" aria-label="Elegir juego">
+        <button class="ranking-tab" type="button" data-ranking="palabra-del-kapo-tiempo" title="Palabra del Kapo"><span class="rank-icon rank-wordle">K</span></button><button class="ranking-tab" type="button" data-ranking="kapo-letras-tiempo" title="Kapo Letras"><span class="rank-icon rank-letters">K</span></button><button class="ranking-tab active" type="button" data-ranking="capitan-beto" title="Capitán Beto">🛸</button><button class="ranking-tab" type="button" data-ranking="sudoku-medium" data-sudoku title="Sudoku">9</button><button class="ranking-tab" type="button" data-ranking="arkanoid" title="Arkanoid"><span class="rank-ark" aria-hidden="true"></span></button><button class="ranking-tab" type="button" data-ranking="tetris" title="Tetris"><span class="rank-tetromino" aria-hidden="true"></span></button><button class="ranking-tab" type="button" data-ranking="franco-a-fondo" title="Franco a Fondo">🏎️</button><button class="ranking-tab" type="button" data-ranking="sopita-tiempo" title="Sopita">🥄</button><button class="ranking-tab" type="button" data-ranking="clave-7" title="Clave 7"><span class="rank-clave7">7</span></button>
+      </div>
+      <div class="ranking-difficulty" id="rankingDifficulty" hidden><button type="button" data-difficulty="easy">FÁCIL</button><button type="button" data-difficulty="medium" class="active">MEDIO</button><button type="button" data-difficulty="hard">DIFÍCIL</button></div>
+      <select class="ranking-select" id="rankingGame" aria-label="Juego" hidden>
+        <option value="capitan-beto">CAPITÁN BETO</option><option value="palabra-del-kapo-tiempo">PALABRA DEL KAPO · TIEMPO</option><option value="kapo-letras-tiempo">KAPO LETRAS · TIEMPO</option><option value="sudoku-easy">SUDOKU · FÁCIL</option><option value="sudoku-medium">SUDOKU · MEDIO</option><option value="sudoku-hard">SUDOKU · DIFÍCIL</option><option value="arkanoid">ARKANOID</option><option value="tetris">TETRIS</option><option value="franco-a-fondo">FRANCO A FONDO</option><option value="sopita-tiempo">SOPITA · TIEMPO</option><option value="clave-7">CLAVE 7 · IQ</option>
+      </select>
+      <p class="ranking-status" id="rankingStatus"></p><div class="ranking-podium" id="rankingPodium"></div><div class="ranking-list" id="rankingList"></div>
+    </div>
+  </div>
+
+  <script src="./js/config.js"></script>
+  <script src="./js/services/ranking.js"></script>
+
+  <script src="./js/compatibility/polyfills.js"></script>
+<script src="./js/games/wordle-words.js"></script>
+<script src="./js/games/core-puzzles.js"></script>
+<script src="./js/games/arkanoid.js"></script>
+<script src="./js/games/tetris.js"></script>
+
+  <script src="./js/games/kapo-letras.js"></script>
+  <script src="./js/games/capitan-beto.js"></script>
+<script src="./js/services/service-worker.js"></script>
+<script src="./js/games/clave-7.js"></script>
+<script src="./js/app/menu-glow.js"></script>
+<script src="./js/app/menu-music.js"></script>
+</body>
+</html>

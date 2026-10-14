@@ -1,10 +1,10 @@
 {
   "id": "./",
-  "name": "Facu Games",
-  "short_name": "Facu Games",
+  "name": "Let's Play",
+  "short_name": "Let's Play",
   "description": "Juegos para boludear con estilo.",
   "lang": "es-AR",
-  "start_url": "./FacuGames.html?source=pwa",
+  "start_url": "./games.html?source=pwa",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait-primary",
@@ -12,16 +12,10 @@
   "theme_color": "#071a28",
   "icons": [
     {
-      "src": "assets/icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
+      "src": "assets/pablis-games-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
       "purpose": "any"
-    },
-    {
-      "src": "assets/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
     }
   ]
 }
