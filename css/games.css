@@ -1090,7 +1090,7 @@
       .home { display: grid; align-items: stretch; }
       .home-shell {
         display: grid;
-        grid-template-rows: auto auto minmax(0, 1fr) auto;
+        grid-template-rows: auto auto auto auto;
         gap: 12px;
         width: min(100%, 1280px);
         min-height: calc(100dvh - max(17px, env(safe-area-inset-top)) - max(22px, env(safe-area-inset-bottom)));
@@ -1101,9 +1101,8 @@
       .ranking-open { width: auto; min-width: 330px; }
       .game-list {
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        grid-auto-rows: minmax(0, 1fr);
+        grid-auto-rows: minmax(150px, auto);
         gap: clamp(10px, 1.4vw, 18px);
-        min-height: 0;
         margin-top: 0;
       }
       .game-card {
@@ -1112,7 +1111,7 @@
         align-content: center;
         justify-items: center;
         gap: clamp(8px, 1.5vh, 15px);
-        min-height: 0;
+        min-height: 150px;
         padding: 14px;
         border-radius: 17px;
         text-align: center;
