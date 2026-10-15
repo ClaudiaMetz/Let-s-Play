@@ -1,4 +1,4 @@
-const CACHE_NAME = 'lets-play-v1.3.0';
+const CACHE_NAME = 'lets-play-v1.3.1';
 const APP_FILES = [
   './', './index.html', './games.html', './offline.html', './manifest.webmanifest',
   './css/landing.css', './css/games.css', './js/app/landing.js', './js/app/menu-glow.js', './js/app/menu-music.js', './js/config.js',

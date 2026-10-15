@@ -440,12 +440,12 @@
         const letter=event.target.closest('.kl-letter');
         if(!letter)return;
         drag={id:event.pointerId,x:event.clientX,y:event.clientY,start:+letter.dataset.index,moved:false,seen:new Set()};
-        wheel.setPointerCapture?.(event.pointerId);
       });
 
       wheel.addEventListener('pointermove',event=>{
         if(!drag||drag.id!==event.pointerId)return;
         if(!drag.moved&&Math.hypot(event.clientX-drag.x,event.clientY-drag.y)>7){drag.moved=true;setCurrent();addLetter(letterOrder[drag.start],drag.start);drag.seen.add(drag.start);}
+        if(drag.moved&&!wheel.hasPointerCapture?.(event.pointerId))wheel.setPointerCapture?.(event.pointerId);
         if(!drag.moved)return;
         const target=document.elementFromPoint(event.clientX,event.clientY)?.closest('.kl-letter');
         if(target&&wheel.contains(target)){

@@ -1,5 +1,6 @@
 (()=>{
     const {ANSWERS,FULL}=window.PabliWordleDictionary;
+    const VALID=new Set([...ANSWERS,...FULL]);
     const menu=document.querySelector('#home'),view=document.querySelector('#wordleView'),board=document.querySelector('#wordBoard'),keyboard=document.querySelector('#keyboard'),message=document.querySelector('#wordMessage'),soundBtn=document.querySelector('#soundBtn'),privacyScreen=document.querySelector('#privacyScreen'),wordTime=document.querySelector('#wordTime'),wordRelax=document.querySelector('#wordRelax'),wordTurbo=document.querySelector('#wordTurbo'),turboStatus=document.querySelector('#turboStatus'),turboProgress=document.querySelector('#turboProgress'),newWordBtn=document.querySelector('#newWord');
     const arkanoidView=document.querySelector('#arkanoidView'),tetrisView=document.querySelector('#tetrisView');
     const rows=[['Q','W','E','R','T','Y','U','I','O','P','⌫'],['A','S','D','F','G','H','J','K','L','Ñ','ENTER'],['Z','X','C','V','B','N','M']];let state,audioCtx,wordMode='relax',turbo=null,wordTickTimer=0,wordTickStep=0,soundOn=localStorage.getItem('pablisgames-sound')!=='off';
